@@ -31,18 +31,18 @@ const SignUp = () => {
         ss_abi,
         signer
       );
-      console.log("wait...");
+      // console.log("wait...");
       let tx = await connectedContract.addUser(name, email, number, userImage);
-      console.log("=V=====V=======V=========V=======V=====V=");
-      console.log(tx);
-      console.log("value set!");
-      console.log("====================================");
+      // console.log("=V=====V=======V=========V=======V=====V=");
+      // console.log(tx);
+      // console.log("value set!");
+      // console.log("====================================");
     }
   };
 
   const uploadImage = async (e) => {
     const profile_image = e.target.files[0];
-    console.log(profile_image);
+    // console.log(profile_image);
 
     const form = new FormData();
     form.append("file", profile_image);
@@ -57,12 +57,12 @@ const SignUp = () => {
       },
       data: form,
     };
-    console.log(options);
+    // console.log(options);
 
     await axios
       .request(options)
       .then(function (response) {
-        console.log(response.data.ipfs_url);
+        // console.log(response.data.ipfs_url);
         setUserImage(response.data.ipfs_url);
       })
       .catch(function (error) {

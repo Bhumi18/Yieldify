@@ -5,6 +5,11 @@ import { useEffect } from "react";
 import Upload from "../../images/edit.svg";
 import { create, CID } from "ipfs-http-client";
 import "./editprofile.scss";
+import { ethers } from "ethers";
+import ss_abi from "../../artifacts/contracts/stakescription.sol/stakescription.json";
+import { useAccount } from "wagmi";
+const CONTRACT_ADDRESS = "0x5b822D18f3412981b54fBb65bb400dB6041eaec8"
+
 export default function EditProfile({
   mainContract,
   account,
@@ -40,7 +45,7 @@ export default function EditProfile({
     setProfile_image(null);
     // console.log(profile_image);
   }
-
+  const { address, isConnecting, isDisconnected } = useAccount();
   const client = create("https://ipfs.infura.io:5001/api/v0");
   const [nameOfUser, setNameOfUser] = useState(name);
   const [emailOfUser, setEmailOfUser] = useState(email);
@@ -84,6 +89,23 @@ export default function EditProfile({
     }
   }
 
+  const editDetails = async()=>{
+    if (typeof window.ethereum !== "undefined") {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = provider.getSigner();
+      const connectedContract = new ethers.Contract(
+        CONTRACT_ADDRESS,
+        ss_abi,
+        signer
+      );
+      console.log("wait...");
+      // console.log(nameOfUser,emailOfUser,designationOfUser)
+      const tx = await connectedContract.editUserDetails(nameOfUser,emailOfUser,designationOfUser);
+      tx.wait()
+    }
+  }
+
   return (
     <>
       <div className="modalBackground">
@@ -111,7 +133,7 @@ export default function EditProfile({
             </svg>
           </div>
           <div className="body">
-            <h3 className="edit-profile-content">Edit Image</h3>
+            {/* <h3 className="edit-profile-content">Edit Image</h3>
             {profile_image ? (
               <>
                 <img
@@ -147,7 +169,7 @@ export default function EditProfile({
               onChange={(e) => {
                 UploadImage(e);
               }}
-            />
+            /> */}
             <h3 className="edit-profile-content">Profile Name</h3>
             <input
               className="input-edit-profile"
@@ -185,7 +207,7 @@ export default function EditProfile({
             >
               Cancel
             </button>
-            <button className="save" onClick={(e) => getUserDetails()}>
+            <button className="save" onClick={(e) => editDetails()}>
               Continue
             </button>
           </div>

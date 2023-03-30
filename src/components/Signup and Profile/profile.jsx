@@ -215,7 +215,7 @@ const Profile = ({ mainContract, account }) => {
         <div className="profile-position">
           <div className="profile-left">
             <div className="profile-header">Profile</div>
-            <img className="profile-img" src={userImage} alt="profile-img" />
+            {/* <img className="profile-img" src={userImage} alt="profile-img" /> */}
             <div className="profile-content-main">
               <div className="profile-content">
                 Name - <span>{userName}</span>
