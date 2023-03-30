@@ -51,6 +51,14 @@ export default function EditProfile({
       tagList[i] = tags[i].text;
     }
     // console.log(mainContract);
+    console.log("hi");
+    console.log(
+      nameOfUser,
+      profile_image_url,
+      emailOfUser,
+      designationOfUser,
+      tagList
+    );
     const tx = await mainContract.createProfile(
       nameOfUser,
       profile_image_url,

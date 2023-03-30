@@ -1,7 +1,7 @@
 // SPDX-License-Identifier:MIT
 pragma solidity ^0.8.0;
 
-contract stakescription {
+contract Yieldify {
     address owner; // us as NCS Owner(contract Owner)
 
     uint256 planIdCounter; // Id counter for Plan details
@@ -72,29 +72,36 @@ contract stakescription {
 
 
     /// @notice Function to edit users' name
-    function editUserName(string memory _name) public {
-        userDetails memory user = userDataMapping[msg.sender];
-        user.name = _name;
-        userDataMapping[msg.sender] = user;
-    }
-    /// @notice Function to edit users' email
-    function editUserEmail(string memory _emailId) public {
-        userDetails memory user = userDataMapping[msg.sender];
-        user.emailId = _emailId;
-        userDataMapping[msg.sender] = user;
-    }
-    /// @notice Function to edit users' mobileNumber
-    function editUserMobileNumber(uint256 _mobileNumber) public {
-        userDetails memory user = userDataMapping[msg.sender];
-        user.mobileNumber = _mobileNumber;
-        userDataMapping[msg.sender] = user;
-    }
+    // function editUserName(string memory _name) public {
+    //     userDetails memory user = userDataMapping[msg.sender];
+    //     user.name = _name;
+    //     userDataMapping[msg.sender] = user;
+    // }
+    // /// @notice Function to edit users' email
+    // function editUserEmail(string memory _emailId) public {
+    //     userDetails memory user = userDataMapping[msg.sender];
+    //     user.emailId = _emailId;
+    //     userDataMapping[msg.sender] = user;
+    // }
+    // /// @notice Function to edit users' mobileNumber
+    // function editUserMobileNumber(uint256 _mobileNumber) public {
+    //     userDetails memory user = userDataMapping[msg.sender];
+    //     user.mobileNumber = _mobileNumber;
+    //     userDataMapping[msg.sender] = user;
+    // }
 
-    /// @notice Function to edit users' Image
-    function editUserImage(string memory _userImage) public {
-        userDetails memory user = userDataMapping[msg.sender];
-        user.userImage = _userImage;
-         userDataMapping[msg.sender] = user;
+    // /// @notice Function to edit users' Image
+    // function editUserImage(string memory _userImage) public {
+    //     userDetails memory user = userDataMapping[msg.sender];
+    //     user.userImage = _userImage;
+    //      userDataMapping[msg.sender] = user;
+    // }
+
+    // 
+    function editUserDetails(string memory _name, string memory _email, uint _mobile) public{
+        userDataMapping[msg.sender].name = _name;
+        userDataMapping[msg.sender].emailId = _email;
+        userDataMapping[msg.sender].mobileNumber = _mobile;
     }
 
     ///@notice Function to Add Plan

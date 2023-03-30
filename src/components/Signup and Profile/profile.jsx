@@ -20,7 +20,7 @@ const Profile = ({ mainContract, account }) => {
   const { address, isConnecting, isDisconnected } = useAccount();
 
   const SCROLL_CONTRACT_ADDRESS = "0xC7eC9E3143620FCB5A719818372D72b7F75d3CA5";
-  const CONTRACT_ADDRESS = "0x0e313A08547361F265d634B5A7b9179f432d0f52";
+  const CONTRACT_ADDRESS = "0x5b822D18f3412981b54fBb65bb400dB6041eaec8";
   const [userAddress, setUserAddress] = useState("");
   const [isLoading, setLoading] = React.useState(true);
   const [name, setName] = React.useState("");
@@ -53,7 +53,7 @@ const Profile = ({ mainContract, account }) => {
       const signer = provider.getSigner();
       const connectedContract = new ethers.Contract(
         CONTRACT_ADDRESS,
-        ss_abi.abi,
+        ss_abi,
         signer
       );
       console.log("wait...");
@@ -86,7 +86,7 @@ const Profile = ({ mainContract, account }) => {
 
       const connectedContract = new ethers.Contract(
         CONTRACT_ADDRESS,
-        ss_abi.abi,
+        ss_abi,
         signer
       );
       console.log("wait...");
@@ -111,7 +111,7 @@ const Profile = ({ mainContract, account }) => {
 
       const connectedContract = new ethers.Contract(
         CONTRACT_ADDRESS,
-        ss_abi.abi,
+        ss_abi,
         signer
       );
       console.log("wait calling another fn...");
@@ -142,7 +142,7 @@ const Profile = ({ mainContract, account }) => {
     await provider.send("eth_requestAccounts", []);
     const connectedContract = new ethers.Contract(
       CONTRACT_ADDRESS,
-      ss_abi.abi,
+      ss_abi,
       provider
     );
     let tx = await connectedContract.countPlan();
@@ -163,7 +163,7 @@ const Profile = ({ mainContract, account }) => {
 
       const connectedContract = new ethers.Contract(
         CONTRACT_ADDRESS,
-        ss_abi.abi,
+        ss_abi,
         signer
       );
       console.log("wait...");

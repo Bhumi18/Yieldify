@@ -17,7 +17,7 @@ import compoundDao from "../../images/compoundDao.png";
 const AllSubscription = () => {
   // let arr = [1, 2, 3];
   const SCROLL_CONTRACT_ADDRESS = "0xC7eC9E3143620FCB5A719818372D72b7F75d3CA5";
-  const CONTRACT_ADDRESS = "0x0e313A08547361F265d634B5A7b9179f432d0f52";
+  const CONTRACT_ADDRESS = "0x5b822D18f3412981b54fBb65bb400dB6041eaec8";
   const { address, isConnecting, isDisconnected } = useAccount();
   const [data, setData] = React.useState("");
   // let planCount = 0;
@@ -55,7 +55,7 @@ const AllSubscription = () => {
     const signer = provider.getSigner();
     const connectedContract = new ethers.Contract(
       CONTRACT_ADDRESS,
-      ss_abi.abi,
+      ss_abi,
       provider
     );
     let tx = await connectedContract.countPlan();
@@ -82,7 +82,7 @@ const AllSubscription = () => {
 
       const connectedContract = new ethers.Contract(
         CONTRACT_ADDRESS,
-        ss_abi.abi,
+        ss_abi,
         signer
       );
       console.log("wait...");
@@ -137,7 +137,7 @@ const AllSubscription = () => {
 
       const connectedContract = new ethers.Contract(
         CONTRACT_ADDRESS,
-        ss_abi.abi,
+        ss_abi,
         signer
       );
       console.log("wait...");
