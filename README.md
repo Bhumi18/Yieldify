@@ -10,3 +10,11 @@ The Smart Contracts overlook the transaction and make sure as soon as the money 
 A year later, the interest from the Pool redirects to the Smart Contract that pays for the Subscription.
 
 Meanwhile, the staked tokens are either returned to the users' wallets or remain in the stake pool.
+
+## Tech Stack
+- **Frontend**: React.js
+- **Smart Contracts**: Solidity
+- **Blockchain**: Scroll, Ethereum, Polygon
+- **DeFi Protocols**: Compound DAO, Aave
+- **Notifications**: Push Protocol
+
